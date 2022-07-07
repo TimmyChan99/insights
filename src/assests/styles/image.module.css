@@ -1,0 +1,13 @@
+.articleImage {
+	object-fit: cover;
+	width: 100%;
+	height: 50%;
+	-webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.articleImage:hover {
+	transform: scale(1.2);
+	-webkit-filter: grayscale(0%);
+  filter: grayscale(0%);
+}

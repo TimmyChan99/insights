@@ -21,7 +21,7 @@ const Home = () => {
 			</div>
 				<hr className='border-black w-2/3 mx-auto' />
 				<div className='text-2xl flex mx-auto justify-center space-x-6 w-2/3'>
-					<h4><a href='#'>Articles &rarr;</a></h4>
+					<h4><a href='/articles'>Articles &rarr;</a></h4>
 					<h4><a href='#'>Random &rarr;</a></h4>
 					<h4><a href='#'>About &rarr;</a></h4>
 				</div>
