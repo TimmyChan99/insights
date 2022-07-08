@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../../assests/styles/image.module.css'
+import styles from '../../assests/styles/elements/image.module.css'
 
 const Image = ({link}) => {
 	return (
