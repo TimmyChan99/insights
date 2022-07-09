@@ -34,13 +34,13 @@ const Header = () => {
 					</NavItem>
 
           <NavItem>
-					<NavLinks to='/' >
+					<NavLinks to='/signin' >
 					  <NavBtn>SIGN IN</NavBtn>
 					</NavLinks>
 					</NavItem>
 					
           <NavItem>
-					<NavLinks to='/' >
+					<NavLinks to='/signup' >
 					  <NavBtn >SIGN UP</NavBtn>
 					</NavLinks>
 					</NavItem>
