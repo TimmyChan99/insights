@@ -41,7 +41,7 @@ const Header = () => {
 					
           <NavItem>
 					<NavLinks to='/' >
-					  <NavBtn >SIGN OUT</NavBtn>
+					  <NavBtn >SIGN UP</NavBtn>
 					</NavLinks>
 					</NavItem>
 
