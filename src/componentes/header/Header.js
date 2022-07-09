@@ -9,7 +9,7 @@ import { IconContext } from 'react-icons';
 
 
 const Header = () => {
-	const [click, setClick] = useState(false);pm
+	const [click, setClick] = useState(false);
 
 	const handleClick = () => setClick(!click)
 

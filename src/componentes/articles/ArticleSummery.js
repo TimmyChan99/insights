@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import Image from './Image'
 
 const ArticleSummery = () => {
@@ -7,8 +8,8 @@ const ArticleSummery = () => {
 		<article className='h-96 flex flex-col space-y-2'>
       <Image link={imgLink}/>
 			<time className='text-lg font-bold'>.July 07, 2022</time>
-			<h3 className='text-2xl font-extrabold	'>Article Title</h3>
-			<p className='text-xl font-bold	'>Author Name</p>
+			<h3 className='text-2xl font-extrabold	'>_Article Title</h3>
+			<p className='text-xl font-bold	'>@Author Name</p>
 			<p className='truncate h-fit'>
 			Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
 			Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
@@ -20,7 +21,9 @@ const ArticleSummery = () => {
 			 versions of Lorem Ipsum.
 			</p>
 			<hr className='border-1 border-zinc-900'/>
-			<a href='#' className='text-lg font-bold	'>Read more &rarr;</a>
+			<NavLink to='/articles/details'>
+			  Read more &rarr;
+			</NavLink>
 		</article>
 	)
 }
