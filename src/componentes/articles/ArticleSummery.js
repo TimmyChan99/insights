@@ -1,11 +1,22 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { useSpring, animated as a, config } from '@react-spring/web'
 import Image from './Image'
 
 const ArticleSummery = () => {
+
+	const reveal = useSpring({
+		config: config.slow,
+		from: { opacity: 0, y: 50 },
+		to: {
+			opacity: 1,
+			y: 0,
+		},
+	});
+
 	const imgLink = 'https://images.pexels.com/photos/7380126/pexels-photo-7380126.jpeg?cs=srgb&dl=pexels-sena-aykut-7380126.jpg&fm=jpg'
 	return (
-		<article className='h-96 flex flex-col space-y-2'>
+		<a.article style={reveal} className='h-96 flex flex-col space-y-2'>
       <Image link={imgLink}/>
 			<time className='text-lg font-bold'>.July 07, 2022</time>
 			<h3 className='text-2xl font-extrabold	'>_Article Title</h3>
@@ -24,7 +35,7 @@ const ArticleSummery = () => {
 			<NavLink to='/articles/details'>
 			  Read more &rarr;
 			</NavLink>
-		</article>
+		</a.article>
 	)
 }
 
