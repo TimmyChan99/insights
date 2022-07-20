@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { useTrail, animated as a } from '@react-spring/web'
 
-const config = { mass: 5, tension: 2000, friction: 200 };
+const config = { mass: 5, tension: 900, friction: 200 };
 const Home = () => {
 
 	const [toggle, set] = useState(true);

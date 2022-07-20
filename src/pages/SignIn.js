@@ -1,8 +1,19 @@
 import React from 'react'
+import { useSpring, animated as a, config } from '@react-spring/web'
 
 const SignIn = () => {
+
+	const reveal = useSpring({
+		config: config.slow,
+		from: { opacity: 0, y: 50 },
+		to: {
+			opacity: 1,
+			y: 0,
+		},
+	});
+
 	return (
-		<div className='sm:w-2/3 lg:w-2/5 m-auto space-y-7 flex flex-col justify-center items-center mt-[10%]'>
+		<a.div style={reveal} className='sm:w-2/3 lg:w-2/5 m-auto space-y-7 flex flex-col justify-center items-center mt-[10%]'>
 			
 			<h1 className='font-extrabold text-3xl'>Log In</h1>
 
@@ -27,7 +38,7 @@ const SignIn = () => {
 				type='submit'
 				>Sign In</button>
 			</form>
-		</div>
+		</a.div>
 	)
 }
 

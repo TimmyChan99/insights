@@ -1,11 +1,22 @@
 import React from 'react';
-import Image from './Image'
+import Image from './Image';
+import { useSpring, animated as a, config } from '@react-spring/web'
 
 const ArticleDetails = () => {
+
+	const reveal = useSpring({
+		config: config.slow,
+		from: { opacity: 0, y: 50 },
+		to: {
+			opacity: 1,
+			y: 0,
+		},
+	});
+
 	const imgLink = 'https://images.pexels.com/photos/7380126/pexels-photo-7380126.jpeg?cs=srgb&dl=pexels-sena-aykut-7380126.jpg&fm=jpg'
 
 	return (
-		<article className='w-4/5 xl:w-3/5 grid grid-cols-3 relative m-auto'>
+		<a.article style={reveal} className='w-4/5 xl:w-3/5 grid grid-cols-3 relative m-auto'>
       {/* <Image link={imgLink}/> */}
 				<h3 className='text-5xl font-extrabold col-span-3 flex items-center justify-center text-center h-36'>Article Title</h3>
 			<div className='flex flex-col col-span-3 lg:col-span-1 items-center text-center space-y-2 h-fit lg:sticky top-20'>
@@ -30,7 +41,7 @@ const ArticleDetails = () => {
 			</p>
 			
 		
-		</article>
+		</a.article>
 	)
 }
 
