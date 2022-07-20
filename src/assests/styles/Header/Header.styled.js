@@ -119,7 +119,7 @@ export const NavLinks = styled(Link)`
 export const NavBtn = styled.button`
  background-color: #18181b;
  color: #fff;
- width: 20%;
+ width: 30%;
 
  &:hover {
       background-color: #3f3f46;
