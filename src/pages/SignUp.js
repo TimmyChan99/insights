@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef} from 'react'
 import { useSpring, animated as a, config } from '@react-spring/web'
 
 const SignUp = () => {
@@ -12,33 +12,50 @@ const SignUp = () => {
 		},
 	});
 
+	const nameRef = useRef();
+	const emailRef = useRef();
+	const passwordRef = useRef();
+
+	const handleSignUp = (event) => {
+		event.preventDefault();
+	
+	}
+
 
 	return (
 		<a.div style={reveal} className='sm:w-2/3 lg:w-2/5 m-auto space-y-7 flex flex-col justify-center items-center mt-[10%]'>
 			
 			<h1 className='font-extrabold text-3xl'>Register</h1>
 
-			<form className='w-5/6 space-y-9 flex flex-col '>
+			<form 
+			onSubmit={handleSignUp}
+			className='w-5/6 space-y-9 flex flex-col '>
 
 				<div className='h-14 flex items-center justify-around'>
 					<label className='text-lg sm:text-xl font-medium'>Name</label>
 					<input 
+					ref={nameRef}
 					className='border-b border-zinc-900 w-3/5'
-					type='text' />
+					type='text' 
+					name='name' />
 				</div>
 
 				<div className='h-14 flex items-center justify-around'>
 					<label className='text-lg sm:text-xl font-medium'>Email</label>
 					<input 
+					ref={emailRef}
 					className='border-b border-zinc-900 w-3/5 focus:outline-none'
-					type='email' />
+					type='email' 
+					name='email' />
 				</div>
 
 				<div className='h-14 flex items-center justify-around'>
 					<label className='text-lg sm:text-xl font-medium'>Password</label>
 					<input 
+					ref={passwordRef}
 					className='border-b border-zinc-900 w-3/5'
-					type='password' />
+					type='password' 
+					name='password' />
 				</div>
 
 				<button 

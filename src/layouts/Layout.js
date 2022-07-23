@@ -6,10 +6,12 @@ import ArticleDetails from '../componentes/articles/ArticleDetails';
 import Home from '../pages/Home';
 import SignUp from '../pages/SignUp';
 import SignIn from '../pages/SignIn';
+import AuthProvider from '../componentes/auth/AuthProvider';
+
 
 const Layout = () => {
 	return (
-		<>
+		<AuthProvider>
 		<Router>
 		<Header />
 			<Routes>
@@ -20,7 +22,7 @@ const Layout = () => {
 				<Route path='/signin' element={<SignIn />} />
 			</Routes>
 		</Router>
-		</>
+		</AuthProvider>
 	)
 }
 
