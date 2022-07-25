@@ -18,7 +18,7 @@ const Home = () => {
 	onClick={() => set(state => !state)}
 	className='w-full h-[80vh] flex flex-col justify-center items-center'>	
 					{trail.map(({ height, ...style}) => (
-		<div className='flex flex-col items-end w-2/3 sm:w-1/2 lg:w-3/6 space-x-5'>
+		<div key='container' className='flex flex-col items-end w-2/3 sm:w-1/2 lg:w-3/6 space-x-5'>
              <a.div 
 						 style={style}
 						 className='bg-zinc-900 uppercase w-full'>

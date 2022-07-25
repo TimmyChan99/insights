@@ -58,7 +58,7 @@ const SignIn = () => {
 					<button 
 				className='text-xl font-medium bg-zinc-500 text-white w-3/5 m-auto h-9'
 				type='submit'
-				>Login in...</button>
+				>Signing in...</button>
 				)}
 			</form>
 			<div className='sm:text-lg'>

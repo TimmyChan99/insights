@@ -6,12 +6,16 @@ import { Nav,
 } from '../../assests/styles/Header/Header.styled';
 import {FaBars, FaTimes } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
+import { useAuth } from '../../componentes/auth/AuthProvider'
 
 
 const Header = () => {
 	const [click, setClick] = useState(false);
+	const { currentUser, signout } = useAuth();
 
 	const handleClick = () => setClick(!click)
+	
+	
 
 	return (
 		<StyledHeader>
@@ -33,17 +37,27 @@ const Header = () => {
 						<NavLinks to='/articles' >Articles</NavLinks>
 					</NavItem>
 
-          <NavItem>
-					<NavLinks to='/signin' >
-					  <NavBtn>SIGN IN</NavBtn>
-					</NavLinks>
-					</NavItem>
-					
-          <NavItem>
-					<NavLinks to='/signup' >
-					  <NavBtn >SIGN UP</NavBtn>
-					</NavLinks>
-					</NavItem>
+          {currentUser ? (
+						<NavItem >
+						<NavLinks to='/' >
+							<NavBtn onClick={signout}>Log out</NavBtn>
+						</NavLinks>
+						</NavItem>
+					) : (
+					<>
+						<NavItem>
+						<NavLinks to='/signin' >
+							<NavBtn>SIGN IN</NavBtn>
+						</NavLinks>
+						</NavItem>
+						
+								 <NavItem>
+						<NavLinks to='/signup' >
+							<NavBtn >SIGN UP</NavBtn>
+						</NavLinks>
+						</NavItem>
+					</>)
+					}
 
 				</NavMenu>
 

@@ -65,16 +65,18 @@ const SignUp = () => {
 					name='password' />
 				</div>
 
-			{	!loading ? (<button 
-				className='text-lg text-xl font-medium bg-zinc-900 text-white w-3/5 m-auto h-9'
-				type='submit'
+			{	!loading ? (
+			  <button 
+				  className='text-lg text-xl font-medium bg-zinc-900 text-white w-3/5 m-auto h-9'
+				  type='submit'
 				>Sign Up</button>) : (
-					<button 
-				className='text-xl font-medium bg-zinc-500 text-white w-3/5 m-auto h-9'
-				type='submit'
-				>Signing Up...</button>
+				<button 
+				  className='text-xl font-medium bg-zinc-500 text-white w-3/5 m-auto h-9'
+				  type='submit'
+				>Signing up...</button>
 				)
-			}
+			}  
+			
 			</form>
 			<div className='sm:text-lg'>
 				Already have an account? <Link className='font-bold underline' to='/signin'>Sign In</Link>
