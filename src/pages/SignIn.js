@@ -1,35 +1,53 @@
-import React from 'react'
-import { useSpring, animated as a, config } from '@react-spring/web'
+import React, {useState, useRef} from 'react'
+import { Link } from 'react-router-dom';
+import { useAuth } from '../componentes/auth/AuthProvider'
 
 const SignIn = () => {
+	const emailRef = useRef();
+	const passwordRef = useRef();
+	const { signin, currentUser } = useAuth();
+	const [error, setError] = useState('')
+	const [loading, setLoading] = useState(false)
+	
+	const handleSignIn =  async (event) => {
+		event.preventDefault();
+	  
+		try {
+			setError('')
+			setLoading(true)
+		  await signin(emailRef.current.value, passwordRef.current.value)
+			console.log(currentUser.displayName);
+			
+		} catch(error) {
+			const errorCode = error.code;
+			setError(errorCode);
+		}
 
-	const reveal = useSpring({
-		config: config.slow,
-		from: { opacity: 0, y: 50 },
-		to: {
-			opacity: 1,
-			y: 0,
-		},
-	});
+		setLoading(false)
+	}
 
 	return (
-		<a.div style={reveal} className='sm:w-2/3 lg:w-2/5 m-auto space-y-7 flex flex-col justify-center items-center mt-[10%]'>
+		<div className='sm:w-2/3 lg:w-2/5 m-auto space-y-7 flex flex-col justify-center items-center mt-[10%]'>
 			
 			<h1 className='font-extrabold text-3xl'>Log In</h1>
 
-			<form className='w-5/6 space-y-9 flex flex-col '>
+			<form 
+			onSubmit={handleSignIn}
+			className='w-5/6 space-y-9 flex flex-col '>
 
 				<div className='h-14 flex items-center justify-around'>
 					<label className='text-lg sm:text-xl font-medium'>Email</label>
-					<input 
+					<input
+					ref={emailRef}
 					className='border-b border-zinc-900 w-3/5 focus:outline-none'
 					type='email' />
 				</div>
 
 				<div className='h-14 flex items-center justify-around'>
 					<label className='text-lg sm:text-xl font-medium'>Password</label>
-					<input 
-					className='border-b border-zinc-900 w-3/5'
+					<input
+					ref={passwordRef}
+					className='border-b border-zinc-900 w-3/5 focus:outline-none'
 					type='password' />
 				</div>
 
@@ -38,7 +56,10 @@ const SignIn = () => {
 				type='submit'
 				>Sign In</button>
 			</form>
-		</a.div>
+			<div className='sm:text-lg'>
+				Need an account? <Link className='font-bold underline' to='/signup'>Sign Up</Link>
+			</div>
+		</div>
 	)
 }
 

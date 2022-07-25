@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react'
+import { Link } from 'react-router-dom';
 import { useAuth } from '../componentes/auth/AuthProvider'
 
 const SignUp = () => {
@@ -40,7 +41,7 @@ const SignUp = () => {
 					<label className='text-lg sm:text-xl font-medium'>Name</label>
 					<input 
 					ref={nameRef}
-					className='border-b border-zinc-900 w-3/5'
+					className='border-b border-zinc-900 w-3/5 focus:outline-none'
 					type='text' 
 					name='name' />
 				</div>
@@ -58,7 +59,7 @@ const SignUp = () => {
 					<label className='text-lg sm:text-xl font-medium'>Password</label>
 					<input 
 					ref={passwordRef}
-					className='border-b border-zinc-900 w-3/5'
+					className='border-b border-zinc-900 w-3/5 focus:outline-none'
 					type='password' 
 					name='password' />
 				</div>
@@ -68,12 +69,15 @@ const SignUp = () => {
 				type='submit'
 				>Sign Up</button>) : (
 					<button 
-				className='text-lg text-xl font-medium bg-zinc-500 text-white w-3/5 m-auto h-9'
+				className='text-xl font-medium bg-zinc-500 text-white w-3/5 m-auto h-9'
 				type='submit'
 				>Signing Up...</button>
 				)
 			}
 			</form>
+			<div className='sm:text-lg'>
+				Already have an account? <Link className='font-bold underline' to='/signin'>Sign In</Link>
+			</div>
 		</div>
 	)
 }
