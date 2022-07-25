@@ -1,20 +1,21 @@
-import React, { useContext } from 'react'
-import { AuthContext } from './AuthProvider'
-import { Route, Redirect} from 'react-router-dom'
+import React from 'react'
+import { useAuth } from './AuthProvider'
+import { Navigate} from 'react-router-dom'
 
 
-const PrivateRoute = ({ component: RouteComponent, ...rest}) => {
-	const {currentUser} =  useContext(AuthContext)
+const PrivateRoute = ({ children }) => {
+	const {currentUser} =  useAuth();
+	
 	return (
-		<Route 
-		{...rest}
-		render={routeProps => 
-			currentUser ? (
-			  <RouteComponent {...routeProps} />
-	    ) : (
-				<Redirect to='/' />
-			)}
-		/>
+		<>
+				{
+					currentUser ? (
+						 children 
+					) : (
+						<Navigate to='/' />
+					)
+				}
+		</>		
 	)
 }
 
