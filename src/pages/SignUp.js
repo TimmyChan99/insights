@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../componentes/auth/AuthProvider'
 
 const SignUp = () => {
@@ -10,6 +10,7 @@ const SignUp = () => {
 	const { signup } = useAuth();
 	const [error, setError] = useState('')
 	const [loading, setLoading] = useState(false)
+	const navigate = useNavigate()
 
 	const handleSignUp =  async (event) => {
 		event.preventDefault();
@@ -18,7 +19,7 @@ const SignUp = () => {
 			setError('')
 			setLoading(true)
 		  await signup(emailRef.current.value, passwordRef.current.value, nameRef.current.value)
-			
+			navigate('/articles')
 		} catch(error) {
 			const errorCode = error.code;
 			setError(errorCode);
