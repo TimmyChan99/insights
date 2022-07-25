@@ -1,32 +1,37 @@
-import React, { useRef} from 'react'
-import { useSpring, animated as a, config } from '@react-spring/web'
+import React, { useRef, useState } from 'react'
+import { useAuth } from '../componentes/auth/AuthProvider'
 
 const SignUp = () => {
-
-	const reveal = useSpring({
-		config: config.slow,
-		from: { opacity: 0, y: 50 },
-		to: {
-			opacity: 1,
-			y: 0,
-		},
-	});
 
 	const nameRef = useRef();
 	const emailRef = useRef();
 	const passwordRef = useRef();
+	const { signup } = useAuth();
+	const [error, setError] = useState('')
+	const [loading, setLoading] = useState(false)
 
-	const handleSignUp = (event) => {
+	const handleSignUp =  async (event) => {
 		event.preventDefault();
-	
+	  
+		try {
+			setError('')
+			setLoading(true)
+		  await signup(emailRef.current.value, passwordRef.current.value, nameRef.current.value)
+			
+		} catch(error) {
+			const errorCode = error.code;
+			setError(errorCode);
+		}
+
+		setLoading(false)
 	}
 
 
 	return (
-		<a.div style={reveal} className='sm:w-2/3 lg:w-2/5 m-auto space-y-7 flex flex-col justify-center items-center mt-[10%]'>
+		<div className='sm:w-2/3 lg:w-2/5 m-auto space-y-7 flex flex-col justify-center items-center mt-[10%]'>
 			
 			<h1 className='font-extrabold text-3xl'>Register</h1>
-
+      {error && (<p className='text-xl font-bold text-red-600'>{error}</p>)}
 			<form 
 			onSubmit={handleSignUp}
 			className='w-5/6 space-y-9 flex flex-col '>
@@ -58,12 +63,18 @@ const SignUp = () => {
 					name='password' />
 				</div>
 
-				<button 
+			{	!loading ? (<button 
 				className='text-lg text-xl font-medium bg-zinc-900 text-white w-3/5 m-auto h-9'
 				type='submit'
-				>Sign Up</button>
+				>Sign Up</button>) : (
+					<button 
+				className='text-lg text-xl font-medium bg-zinc-500 text-white w-3/5 m-auto h-9'
+				type='submit'
+				>Signing Up...</button>
+				)
+			}
 			</form>
-		</a.div>
+		</div>
 	)
 }
 
