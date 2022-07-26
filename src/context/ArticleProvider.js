@@ -1,5 +1,5 @@
 import React, {useState, useContext, useEffect} from 'react'
-import { collection, getDocs, query, orderBy } from "firebase/firestore";
+import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
 import { db } from '../firebase';
 
 const ArticleContext = React.createContext();
@@ -12,17 +12,21 @@ const ArticleProvider = ({ children }) => {
 
 	const [articles, setArticles] = useState([]);
 	const articlesRef = collection(db, 'articles');
-	const q = query(articlesRef, orderBy('title', 'desc'));
-
-	useEffect(() => {
-		const fuc = async () => {
-		const Snapshot = await getDocs(q);
-
-		Snapshot.forEach((doc) => {
-			console.log(doc.id, " => ", doc.data()); })
-		}
 	
-	 fuc();
+	useEffect(() => {
+		const q = query(articlesRef, orderBy('title', 'desc'));
+		
+		const unsubscribe = onSnapshot(q, (snapshot) => {
+			const articles = snapshot.docs.map(doc => {
+				return {
+					id: doc.id,
+					...doc.data()
+				}
+			})
+			setArticles(articles)
+		})
+
+		return unsubscribe
 	}, [])
 
 
