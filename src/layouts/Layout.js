@@ -9,29 +9,32 @@ import SignIn from '../pages/SignIn';
 import AuthProvider from '../componentes/auth/AuthProvider';
 import PrivateRoute from '../componentes/auth/PrivateRoute';
 import Profile from '../pages/Profile';
+import ArticleProvider from '../context/ArticleProvider';
 
 
 const Layout = () => {
 	return (
 		<AuthProvider>
-		<Router>
-		<Header />
-			<Routes>
-				<Route path='/' element={<Home />} />
-				<Route path='/articles' element={<Articles />} />
-				<Route path='articles/details' element={<ArticleDetails />} />
-				<Route path='/signup' element={<SignUp />} />
-				<Route path='/signin' element={<SignIn />} />
-				<Route 
-				  path='/profile' 
-					element={
-					 <PrivateRoute>
-					  <Profile />
-					 </PrivateRoute>
-				  }
-				/>
-			</Routes>
-		</Router>
+		<ArticleProvider>
+			<Router>
+			<Header />
+				<Routes>
+					<Route path='/' element={<Home />} />
+					<Route path='/articles' element={<Articles />} />
+					<Route path='articles/details' element={<ArticleDetails />} />
+					<Route path='/signup' element={<SignUp />} />
+					<Route path='/signin' element={<SignIn />} />
+					<Route 
+						path='/profile' 
+						element={
+						 <PrivateRoute>
+							<Profile />
+						 </PrivateRoute>
+						}
+					/>
+				</Routes>
+			</Router>
+		</ArticleProvider>
 		</AuthProvider>
 	)
 }
