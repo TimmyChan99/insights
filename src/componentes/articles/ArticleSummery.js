@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { useSpring, animated as a, config } from '@react-spring/web'
 import Image from './Image'
 
-const ArticleSummery = () => {
+const ArticleSummery = ({ article, author, title, image, createdAt}) => {
 
 	const reveal = useSpring({
 		config: config.slow,
@@ -14,23 +14,16 @@ const ArticleSummery = () => {
 		},
 	});
 
-	const imgLink = 'https://images.pexels.com/photos/7380126/pexels-photo-7380126.jpeg?cs=srgb&dl=pexels-sena-aykut-7380126.jpg&fm=jpg'
+	const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  const date = createdAt.toDate().toLocaleDateString('en-US', options);
+
 	return (
 		<a.article style={reveal} className='h-96 flex flex-col space-y-2'>
-      <Image link={imgLink}/>
-			<time className='text-lg font-bold'>.July 07, 2022</time>
-			<h3 className='text-2xl font-extrabold	'>_Article Title</h3>
-			<p className='text-xl font-bold	'>@Author Name</p>
-			<p className='truncate h-fit'>
-			Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-			Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-			when an unknown printer took a galley of type and scrambled it to make a type 
-			specimen book. It has survived not only five centuries, but also the leap into 
-			electronic typesetting, remaining essentially unchanged. It was popularised in 
-			the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-			and more recently with desktop publishing software like Aldus PageMaker including
-			 versions of Lorem Ipsum.
-			</p>
+      <Image link={image}/>
+			<time className='text-lg font-bold'>.{date}</time>
+			<h3 className='text-2xl font-extrabold	'>_{title}</h3>
+			<p className='text-xl font-bold	'>@{author}</p>
+			<p className='truncate h-fit'>{article}</p>
 			<hr className='border-1 border-zinc-900'/>
 			<NavLink to='/articles/details'>
 			  Read more &rarr;
