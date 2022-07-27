@@ -6,7 +6,7 @@ import { Nav,
 } from '../../assests/styles/Header/Header.styled';
 import {FaBars, FaTimes } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
-import { useAuth } from '../../componentes/auth/AuthProvider'
+import { useAuth } from '../../context/AuthProvider'
 
 
 const Header = () => {

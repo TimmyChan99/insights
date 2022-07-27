@@ -6,7 +6,7 @@ import ArticleDetails from '../componentes/articles/ArticleDetails';
 import Home from '../pages/Home';
 import SignUp from '../pages/SignUp';
 import SignIn from '../pages/SignIn';
-import AuthProvider from '../componentes/auth/AuthProvider';
+import AuthProvider from '../context/AuthProvider';
 import PrivateRoute from '../componentes/auth/PrivateRoute';
 import Profile from '../pages/Profile';
 import ArticleProvider from '../context/ArticleProvider';
