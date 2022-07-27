@@ -1,6 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react'
 import { collection, query, orderBy, onSnapshot, addDoc } from "firebase/firestore";
-import { db } from '../firebase';
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { db, storage } from '../firebase';
 
 const ArticleContext = React.createContext();
 
@@ -38,12 +39,23 @@ const ArticleProvider = ({ children }) => {
 
 
 	const addArticle = async (article) => {
-		const docRef = await addDoc(articlesRef, article)
+			const resp = await addDoc(articlesRef, article)
+			return resp		
 	}
+
+  const uploadImage = async (file) => {
+		const name = `${Date.now()}-${file.name}`;
+		const storageRef = ref(storage, name);
+		const uploadTask = uploadBytesResumable(storageRef, file);
+		const url = await uploadTask.then(snapshot => getDownloadURL(snapshot.ref));
+		return url;
+	}
+
 
 	const value = {
 	 articles,
-	 addArticle
+	 addArticle,
+	 uploadImage
 	}
 
 	return (
