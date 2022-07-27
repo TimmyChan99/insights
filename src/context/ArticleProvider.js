@@ -8,6 +8,13 @@ export const useArticle = () => {
 	return useContext(ArticleContext)
 }
 
+export const useDate = (date) => {
+	const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  const formateddate = date.toDate().toLocaleDateString('en-US', options);
+
+	return formateddate
+}
+
 const ArticleProvider = ({ children }) => {
 
 	const [articles, setArticles] = useState([]);
@@ -28,7 +35,6 @@ const ArticleProvider = ({ children }) => {
 
 		return unsubscribe
 	}, [])
-
 
 	const value = {
 	 articles,

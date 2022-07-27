@@ -2,8 +2,9 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSpring, animated as a, config } from '@react-spring/web'
 import Image from './Image'
+import { useDate } from '../../context/ArticleProvider'
 
-const ArticleSummery = ({ article, author, title, image, createdAt}) => {
+const ArticleSummery = ({ id, article, author, title, image, createdAt}) => {
 
 	const reveal = useSpring({
 		config: config.slow,
@@ -14,8 +15,7 @@ const ArticleSummery = ({ article, author, title, image, createdAt}) => {
 		},
 	});
 
-	const options = { year: 'numeric', month: 'long', day: 'numeric' };
-  const date = createdAt.toDate().toLocaleDateString('en-US', options);
+  const date = useDate(createdAt);
 
 	return (
 		<a.article style={reveal} className='h-96 flex flex-col space-y-2'>
@@ -25,7 +25,7 @@ const ArticleSummery = ({ article, author, title, image, createdAt}) => {
 			<p className='text-xl font-bold	'>@{author}</p>
 			<p className='truncate h-fit'>{article}</p>
 			<hr className='border-1 border-zinc-900'/>
-			<NavLink to='/articles/details'>
+			<NavLink to={`/articles/${id}`} >
 			  Read more &rarr;
 			</NavLink>
 		</a.article>
