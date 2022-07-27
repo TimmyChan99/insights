@@ -9,6 +9,7 @@ import SignIn from '../pages/SignIn';
 import AuthProvider from '../context/AuthProvider';
 import PrivateRoute from '../componentes/auth/PrivateRoute';
 import Profile from '../pages/Profile';
+import NewPost from '../pages/NewPost';
 import ArticleProvider from '../context/ArticleProvider';
 
 
@@ -29,6 +30,14 @@ const Layout = () => {
 						element={
 						 <PrivateRoute>
 							<Profile />
+						 </PrivateRoute>
+						}
+					/>
+					<Route 
+						path='/newpost' 
+						element={
+						 <PrivateRoute>
+							<NewPost />
 						 </PrivateRoute>
 						}
 					/>

@@ -37,9 +37,17 @@ const Header = () => {
 						<NavLinks to='/articles' >Articles</NavLinks>
 					</NavItem>
 
-				{ currentUser && (	<NavItem>
+				{ currentUser && (	
+					<>
+				  <NavItem>
 						<NavLinks to='/profile' >Profile</NavLinks>
-					</NavItem>)}
+					</NavItem>
+					
+					<NavItem>
+						<NavLinks to='/newpost' >New Article</NavLinks>
+					</NavItem>
+					</>
+					)}
 
           {currentUser ? (
 						<NavItem >
