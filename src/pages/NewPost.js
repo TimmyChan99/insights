@@ -1,11 +1,13 @@
 import { serverTimestamp } from 'firebase/firestore';
 import React, {useRef, useState} from 'react'
 import { useArticle } from '../context/ArticleProvider';
+import { useAuth } from '../context/AuthProvider';
 
 const NewPost = () => {
-	const InitialState = { title: '', article: '', image: '', createdAt: serverTimestamp() };
-	const imageRef = useRef();
+	const { currentUser } = useAuth();
 	const { addArticle, uploadImage } = useArticle();
+	const imageRef = useRef();
+	const InitialState = { createdAt: serverTimestamp(), author: currentUser.displayName, authorId: currentUser.uid };
 	const [data, setData] = useState(InitialState);
 
 	const handleImage = async () => {
@@ -22,14 +24,14 @@ const NewPost = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		addArticle(data);
+		e.target.reset();
 	}
-
 
 	return (
 		<div className='sm:w-2/3 lg:w-3/5 m-auto space-y-7 flex flex-col justify-center items-center mt-[10%]'>
 		<h1 className='font-extrabold text-3xl'>New Article</h1>
 		
-			<form 
+			<form
 			onSubmit={handleSubmit}
 			className='w-full space-y-9 flex flex-col'>
 				<div className='h-14 flex items-center justify-around'>
