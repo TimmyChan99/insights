@@ -7,7 +7,7 @@ const NewPost = () => {
 	const { currentUser } = useAuth();
 	const { addArticle, uploadImage } = useArticle();
 	const imageRef = useRef();
-	const InitialState = { createdAt: serverTimestamp(), author: currentUser.displayName, authorId: currentUser.uid };
+	const InitialState = { title: '', article: '' ,createdAt: serverTimestamp(), author: currentUser.displayName, authorId: currentUser.uid };
 	const [data, setData] = useState(InitialState);
 
 	const handleImage = async () => {
