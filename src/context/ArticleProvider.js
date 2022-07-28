@@ -32,7 +32,6 @@ const ArticleProvider = ({ children }) => {
 				}
 			})
 			setArticles(articles)
-			console.log(articles);
 		})
 		return unsubscribe
 	}, [])
