@@ -1,7 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react'
-import { collection, query, orderBy, onSnapshot, addDoc } from "firebase/firestore";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { db, storage } from '../firebase';
+import { collection, query, orderBy, onSnapshot, addDoc, deleteDoc, doc } from "firebase/firestore";
+import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from "firebase/storage";
+import { db, storage} from '../firebase';
 
 const ArticleContext = React.createContext();
 
@@ -50,11 +50,23 @@ const ArticleProvider = ({ children }) => {
 		return url;
 	}
 
+	const deleteImageFromStorage = async (url) => {
+		const imageRef = ref(storage, url);
+		const resp = await deleteObject(imageRef);
+		return resp;
+	}
+
+	const deleteArticle = async (id, url) => {
+      const resp = await deleteDoc(doc(articlesRef, id));
+     deleteImageFromStorage(url);
+			return resp
+	}
 
 	const value = {
 	 articles,
 	 addArticle,
-	 uploadImage
+	 uploadImage,
+	 deleteArticle,
 	}
 
 	return (
