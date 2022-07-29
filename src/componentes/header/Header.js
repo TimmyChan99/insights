@@ -6,7 +6,7 @@ import { Nav,
 } from '../../assests/styles/Header/Header.styled';
 import {FaBars, FaTimes } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
-import { useAuth } from '../../componentes/auth/AuthProvider'
+import { useAuth } from '../../context/AuthProvider'
 
 
 const Header = () => {
@@ -37,9 +37,17 @@ const Header = () => {
 						<NavLinks to='/articles' >Articles</NavLinks>
 					</NavItem>
 
-				{ currentUser && (	<NavItem>
+				{ currentUser && (	
+					<>
+				  <NavItem>
 						<NavLinks to='/profile' >Profile</NavLinks>
-					</NavItem>)}
+					</NavItem>
+					
+					<NavItem>
+						<NavLinks to='/newpost' >New Article</NavLinks>
+					</NavItem>
+					</>
+					)}
 
           {currentUser ? (
 						<NavItem >
