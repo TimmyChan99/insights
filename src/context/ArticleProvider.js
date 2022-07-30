@@ -62,11 +62,14 @@ const ArticleProvider = ({ children }) => {
 			return resp
 	}
 
+	let editorValue = '';
+
 	const value = {
 	 articles,
 	 addArticle,
 	 uploadImage,
 	 deleteArticle,
+	 editorValue,
 	}
 
 	return (

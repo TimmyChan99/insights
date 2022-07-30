@@ -6,10 +6,11 @@ import Editor from '../componentes/editor/Editor';
 
 const NewPost = () => {
 	const { currentUser } = useAuth();
-	const { addArticle, uploadImage } = useArticle();
+	const { addArticle, uploadImage, editorValue } = useArticle();
 	const imageRef = useRef();
 	const InitialState = { title: '', article: '' ,createdAt: serverTimestamp(), author: currentUser.displayName, authorId: currentUser.uid };
 	const [data, setData] = useState(InitialState);
+	
 
 	const handleImage = async () => {
 		await uploadImage(imageRef.current.files[0]).then(url => {
@@ -26,6 +27,10 @@ const NewPost = () => {
 		e.preventDefault();
 		addArticle(data);
 		e.target.reset();
+	}
+
+	const handleEditorChange = () => {
+		console.log(editorValue);
 	}
 
 	return (
@@ -75,6 +80,7 @@ const NewPost = () => {
 				</form>
 			</div>
 				 <Editor />
+				 <button onClick={handleEditorChange}>Click</button>
 		</>
 	)
 }
