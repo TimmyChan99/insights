@@ -20,13 +20,13 @@ const Layout = () => {
 			<Router>
 			<Header />
 				<Routes>
-					<Route path='/' element={<Home />} />
-					<Route path='/articles' element={<Articles />} />
-				  <Route path='articles/:articleID' element={<ArticleDetails />} />
-					<Route path='/signup' element={<SignUp />} />
-					<Route path='/signin' element={<SignIn />} />
+					<Route path='/insights/' element={<Home />} />
+					<Route path='/insights/articles' element={<Articles />} />
+				  <Route path='/insights/articles/:articleID' element={<ArticleDetails />} />
+					<Route path='/insights/signup' element={<SignUp />} />
+					<Route path='/insights/signin' element={<SignIn />} />
 					<Route 
-						path='/profile' 
+						path='/insights/profile' 
 						element={
 						 <PrivateRoute>
 							<Profile />
@@ -34,7 +34,7 @@ const Layout = () => {
 						}
 					/>
 					<Route 
-						path='/newpost' 
+						path='/insights/newpost' 
 						element={
 						 <PrivateRoute>
 							<NewPost />
