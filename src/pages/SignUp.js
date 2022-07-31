@@ -79,7 +79,7 @@ const SignUp = () => {
 			
 			</form>
 			<div className='sm:text-lg'>
-				Already have an account? <Link className='font-bold underline' to='/signin'>Sign In</Link>
+				Already have an account? <Link className='font-bold underline' to='/insights/signin'>Sign In</Link>
 			</div>
 		</div>
 	)

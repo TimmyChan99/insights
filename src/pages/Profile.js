@@ -25,7 +25,7 @@ const Profile = () => {
 				className='text-lg font-medium bg-white text-zinc-900 w-36 sm:w-4/5 h-9'
 				type='button'
 				>
-				  <Link to='/newpost'>New Article</Link>
+				  <Link to='/insights/newpost'>New Article</Link>
 				</button>
 			</aside>
 			<ul className='w-5/6 sm:w-6/12 grid grid-cols-1 lg:grid-cols-2 gap-7 my-10 mx-auto'>

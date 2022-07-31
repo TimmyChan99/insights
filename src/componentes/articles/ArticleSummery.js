@@ -36,7 +36,7 @@ const ArticleSummery = ({ id, article, author, authorId, title, image, createdAt
 			<p className='truncate h-fit'>{article}</p>
 			<hr className='border-1 border-zinc-900'/>
 			<div className='flex items-enter justify-between'>
-				<NavLink to={`/articles/${id}`} >
+				<NavLink to={`/insights/articles/${id}`} >
 					Read more &rarr;
 				</NavLink>
 				{isAuthor && (<DeleteButton id={id} image={image}/>) }

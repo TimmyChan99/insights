@@ -12,7 +12,7 @@ const PrivateRoute = ({ children }) => {
 					currentUser ? (
 						 children 
 					) : (
-						<Navigate to='/' />
+						<Navigate to='/insights/' />
 					)
 				}
 		</>		

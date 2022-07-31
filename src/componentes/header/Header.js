@@ -21,7 +21,7 @@ const Header = () => {
 		<StyledHeader>
 			<IconContext.Provider value={{ color: '#18181b' }}>
 			<Nav>
-				<Logo to='/'>
+				<Logo to='/insights/'>
 					insights.
 				</Logo>
 				<MobileIcon onClick={handleClick}>
@@ -30,41 +30,41 @@ const Header = () => {
 
 				<NavMenu onClick={handleClick} click={click}>
 					<NavItem>
-						<NavLinks to='/' >Home</NavLinks>
+						<NavLinks to='/insights/' >Home</NavLinks>
 					</NavItem>
 
 					<NavItem>
-						<NavLinks to='/articles' >Articles</NavLinks>
+						<NavLinks to='/insights/articles' >Articles</NavLinks>
 					</NavItem>
 
 				{ currentUser && (	
 					<>
 				  <NavItem>
-						<NavLinks to='/profile' >Profile</NavLinks>
+						<NavLinks to='/insights/profile' >Profile</NavLinks>
 					</NavItem>
 					
 					<NavItem>
-						<NavLinks to='/newpost' >New Article</NavLinks>
+						<NavLinks to='/insights/newpost' >New Article</NavLinks>
 					</NavItem>
 					</>
 					)}
 
           {currentUser ? (
 						<NavItem >
-						<NavLinks to='/' >
+						<NavLinks to='/insights/' >
 							<NavBtn onClick={signout}>Log out</NavBtn>
 						</NavLinks>
 						</NavItem>
 					) : (
 					<>
 						<NavItem>
-						<NavLinks to='/signin' >
+						<NavLinks to='/insights/signin' >
 							<NavBtn>SIGN IN</NavBtn>
 						</NavLinks>
 						</NavItem>
 						
 								 <NavItem>
-						<NavLinks to='/signup' >
+						<NavLinks to='/insights/signup' >
 							<NavBtn >SIGN UP</NavBtn>
 						</NavLinks>
 						</NavItem>

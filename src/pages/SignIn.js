@@ -62,7 +62,7 @@ const SignIn = () => {
 				)}
 			</form>
 			<div className='sm:text-lg'>
-				Need an account? <Link className='font-bold underline' to='/signup'>Sign Up</Link>
+				Need an account? <Link className='font-bold underline' to='/insights/signup'>Sign Up</Link>
 			</div>
 		</div>
 	)
