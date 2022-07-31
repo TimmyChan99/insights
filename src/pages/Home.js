@@ -24,7 +24,7 @@ const Home = () => {
 						 className='bg-zinc-900 uppercase w-full'>
 						 <a.div 
 						 style={style}
-						 className='text-7xl sm:text-7xl lg:text-8xl font-extrabold text-white text-right'>Insights.</a.div>
+						 className='text-5xl sm:text-7xl lg:text-8xl font-extrabold text-white text-right'>Insights.</a.div>
 					 </a.div>
 					<a.div  style={style} className='text-4xl flex flex-col font-extrabold text-right text-zinc-900'>
 							<a.div style={{height}}>Thoughts</a.div>
