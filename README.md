@@ -1,7 +1,9 @@
 # Insight
+This is a blog app where users can read articles and posts of others. If you want to post or write an article you need t register or sign up.
 <p align="center">
 <img src="https://user-images.githubusercontent.com/92228303/182718975-e6650cbe-fbc9-4d4a-9f65-899080af793b.gif" alt="app demo" />
 </p>
+
 ## Getting Started
 
 ### **Setup**
