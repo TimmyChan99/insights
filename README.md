@@ -11,6 +11,7 @@ This is a blog app where users can read articles and posts of others. If you wan
 - JavaScript
 - React
 - Firebase
+- React-Quill
 
 ## Getting Started
 
