@@ -33,7 +33,7 @@ const ArticleSummery = ({ id, article, author, authorId, title, image, createdAt
 			<time className='text-lg font-bold'>.{date}</time>
 			<h3 className='text-2xl font-extrabold	'>_{title}</h3>
 			<p className='text-xl font-bold	'>@{author}</p>
-			<p className='truncate h-fit'>{article}</p>
+			<p className='truncate h-fit' dangerouslySetInnerHTML={{__html: article}} />
 			<hr className='border-1 border-zinc-900'/>
 			<div className='flex items-enter justify-between'>
 				<NavLink to={`/insights/articles/${id}`} >
