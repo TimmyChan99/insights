@@ -28,7 +28,6 @@ const NewPost = () => {
 		e.preventDefault();
 		console.log({...data, article: value});
 		addArticle({...data, article: value});
-		// addArticle(data);
 		e.target.reset();
 	}
 
@@ -60,9 +59,8 @@ const NewPost = () => {
 					/>
 				</div>
 
-				<div className=' flex items-center justify-around'>
+				<div className='flex items-center justify-around'>
 					<label className='text-lg sm:text-xl self-start font-medium'>Article</label>
-					
 					<Editor value={value} setValue={setValue} />
 				</div>
 

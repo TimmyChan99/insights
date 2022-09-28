@@ -3,7 +3,6 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
 function Editor({value, setValue}) {
-  // const [value, setValue] = useState('');
 
 	const modules = {
     toolbar: [
@@ -15,7 +14,7 @@ function Editor({value, setValue}) {
     ],
   }
 	
-  return <ReactQuill theme="snow" value={value} onChange={setValue} modules={modules} placeholder='Add your article here' />;
+  return <ReactQuill theme="snow" value={value} onChange={setValue} modules={modules} placeholder='Add your article here' className='border border-zinc-900 w-3/5 focus:outline-none'/>;
 }
 
 export default Editor;
