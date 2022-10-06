@@ -18,6 +18,12 @@ const ArticleDetails = () => {
 	const { articles } = useArticle()
   const articleDetail = articles.find(article => article.id === articleID) || {};
 	const date = useDate(articleDetail.createdAt)
+	const convertStringToHTML = (string) => {
+		const parser = new DOMParser();
+		const doc = parser.parseFromString(string, 'text/html');
+		return doc.body.innerHTML;
+	}
+	console.log(convertStringToHTML(articleDetail.article));
 
 	return (
 		<a.article style={reveal} className='w-4/5 xl:w-3/5 grid grid-cols-3 relative m-auto'>
@@ -26,9 +32,7 @@ const ArticleDetails = () => {
 			  <p className='text-xl font-bold	'>@{articleDetail.author}</p>
 				<time className='text-lg font-bold'>{date}</time>
 			</div>
-			<p className='h-fit col-span-3 lg:col-span-2 p-5'>
-			 { articleDetail.article}
-			</p>
+			<div className='h-fit col-span-3 lg:col-span-2 p-5' dangerouslySetInnerHTML={{__html: articleDetail.article}}/>
 			
 		
 		</a.article>
